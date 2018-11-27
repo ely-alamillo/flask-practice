@@ -39,9 +39,13 @@ def get_stores():
 def create_store_item(name):
     for store in stores:
         if store["name"] == name:
+            print(store["name"])
+            print(name)
+            print("-------")
             request_data = request.get_json()
             new_item = {"name": request_data["name"], "price": request_data["price"]}
             store["items"].append(new_item)
+            return jsonify(new_item)
     return jsonify({"message": "store not found."})
 
 
